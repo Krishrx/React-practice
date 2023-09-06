@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.App{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(152, 225, 252, 0.677);
+    box-sizing: border-box;
+    font-family: 'Barlow Condensed', sans-serif;
+}
+
+.heading{
+    margin: 16px;
+}
+
+.headText{
+    margin: 16px;
+    margin-top: 10px;
+}
+
+.cont{
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.cont input{
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    margin: 8px;
+}
+
+.btn{
+    padding: 10px;
+    padding-left: 120px;
+    padding-right: 120px;
+    border-radius: 8px;
+    background-color: rgb(255, 103, 103);
+    border-color: rgb(255, 103, 103);
+    color: white;
+    cursor: pointer;
+}
