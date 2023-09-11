@@ -1,4 +1,4 @@
-#Highest Population Task
+# Highest Population Task(Bar Chart)
 
 # Getting Started with Create React App
 
