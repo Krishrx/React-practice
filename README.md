@@ -1,4 +1,4 @@
-# Login Logout using Conditional Rendering
+# Fetch data from some api & show loading skeleton effect
 
 # Getting Started with Create React App
 
