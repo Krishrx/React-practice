@@ -1,29 +1,23 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react';
 
-class Main extends Component {
-    
-    state = {
-        top: 0,
-        left:0
-    }
-    handleHover= (e) => {
-        let newTop = Math.floor(Math.random() * 500);
-        let newLeft = Math.floor(Math.random() * 500);
-        this.setState({
-            top: newTop,
-            left: newLeft
-        })
+function Main() {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
 
-    }
-    render() {
-        const { top, left } = this.state;
-        let style = `relative cursor-pointer p-5 bg-pink-600 top-[${top}px] left-[${left}px] w-fit m-5`;
-    return (
-    <div className={style} onMouseEnter={this.handleHover}>
-        Hover over me  
-    </div>
-    )
-}
+  const handleMouseOver = () => {
+    const newX = Math.random() * window.innerWidth;
+    const newY = Math.random() * window.innerHeight;
+    setPosition({ x: newX, y: newY });
+  };
+
+  return (
+        <div
+        className="random-div relative w-[100px] p-2 bg-pink-700 text-white cursor-pointer"
+        onMouseOver={handleMouseOver}
+        style={{ left: position.x, top: position.y }}
+        >
+        Hover me!
+        </div>
+  );
 }
 
-export default Main
+export default Main;
