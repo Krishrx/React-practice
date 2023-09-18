@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
-import Input from '../shared/Input';
+import Input,{InputCheckBox,InputRadio,InputSelect,InputTextArea,InputFile} from '../shared/Input';
+import Button from '../shared/Button';
 import {options as countryList} from '../data/countryList'
 
 
@@ -8,7 +9,6 @@ function Main() {
   const countryOptions = countryList.map(({ value, label }) => {
     return (
       <option key={label} value={value}>
-        {''}
       {label}
     </option>
     )
@@ -46,44 +46,103 @@ function Main() {
       
     }
     else if (type === 'file') {
-      setFormData({
-        ...formData, [name]: e.target.files[0]
-      })
-      console.log(e.target.files[0]);
+      setFormData(prevData => {
+        return {
+          ...prevData, [name]: e.target.files[0]
+        }
+      }
+  )
     }
     else {
-      setFormData({
-        ...formData,[name]:value
-      })
+      setFormData(prevData => {
+        return {
+          ...prevData,[name]:value
+        }
+      }
+        
+  )
+
     }
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+    const {
+      fName,
+      email,
+      phno,
+      dob,
+      gender,
+      skills,
+      country,
+      bio,
+      file
+    } = formData;
+
+    const formattedSkills = []
+    for (const key in skills) {
+      if (skills[key]) {
+        formattedSkills.push(key.toUpperCase())
+      }
+    }
+
+    const finalData = {
+      fName,
+      email,
+      phno,
+      dob,
+      gender,
+      skills:formattedSkills,
+      country,
+      bio,
+      file
+    }
+
+    console.log(finalData);
+  }
+
+  const {
+      fName,
+      email,
+      phno,
+      dob,
+      gender,
+      skills,
+      country,
+      bio,
+      file
+    } = formData;
+
   return (
-    <div className='m-5 p-5 flex flex-col space-y-4 bg-pink-50 '>
-      <Input type={'text'} name={'fName'} displayText={'First Name'} fn={handleChange} />
-      <Input type={'email'} name={'email'} displayText={'Email Id'} fn={handleChange} />
-      <Input type={'number'} name={'phno'} displayText={'Phone Number'} fn={handleChange} />
-      <Input type={'date'} name={'dob'} displayText={'Date of Birth'} fn={handleChange} />
+    <form className='m-5 p-5 flex flex-col space-y-4 bg-pink-50 ' onSubmit={handleSubmit}>
+      <Input type={'text'} name={'fName'} displayText={'First Name'} fn={handleChange} value={formData.fName} />
+      <Input type={'email'} name={'email'} displayText={'Email Id'} fn={handleChange} value={email}/>
+      <Input type={'number'} name={'phno'} displayText={'Phone Number'} fn={handleChange} value={phno}/>
+      <Input type={'date'} name={'dob'} displayText={'Date of Birth'} fn={handleChange} value={dob}/>
 
       <div className='flex justify-center items-center space-x-4'>
-      <Input type={'radio'} name={'gender'} id={'male'} displayText={'Male'} fn={handleChange} checked={formData.gender === 'male'} value={'male'}/>
-      <Input type={'radio'} name={'gender'} id={'female'} displayText={'Female'} fn={handleChange} checked={formData.gender === 'female'} value={'female'}/>
-      <Input type={'radio'} name={'gender'} id={'other'} displayText={'Other'} fn={handleChange} checked={formData.gender === 'other'} value={'other'}/> 
+      <InputRadio type={'radio'} name={'gender'} id={'male'} displayText={'Male'} fn={handleChange} checked={gender === 'male'} value={'male'}/>
+      <InputRadio type={'radio'} name={'gender'} id={'female'} displayText={'Female'} fn={handleChange} checked={gender === 'female'} value={'female'}/>
+      <InputRadio type={'radio'} name={'gender'} id={'other'} displayText={'Other'} fn={handleChange} checked={gender === 'other'} value={'other'}/> 
       </div>
 
       <div className='flex justify-center items-center space-x-4'>
-      <Input type={'checkbox'} name={'html'} fn={handleChange} displayText={'Html'} />
-      <Input type={'checkbox'} name={'css'} fn={handleChange} displayText={'Css'} />
-      <Input type={'checkbox'} name={'js'} fn={handleChange} displayText={'Js'} />
+      <InputCheckBox type={'checkbox'} name={'html'} fn={handleChange} displayText={'Html'} />
+      <InputCheckBox type={'checkbox'} name={'css'} fn={handleChange} displayText={'Css'} />
+      <InputCheckBox type={'checkbox'} name={'js'} fn={handleChange} displayText={'Js'} />
       </div>
 
-      <Input type={'select'} fn={handleChange} name={'country'} displayText={'Country'} value={formData.country} selectOptions={countryOptions} />
+      <InputSelect type={'select'} fn={handleChange} name={'country'} displayText={'Country'} value={country} selectOptions={countryOptions} />
       
-      <Input type={'textarea'} textPlaceholder={'Write something...'} name={'bio'} displayText={'Bio'} fn={handleChange}/>
+      <InputTextArea type={'textarea'} textPlaceholder={'Write something...'} name={'bio'} displayText={'Bio'} fn={handleChange} value={bio}/>
 
-      <Input type={'file'} name={'resume'} displayText={'Upload resume'} fn={handleChange} />
+      <InputFile name={'file'} displayText={'Upload resume'} fn={handleChange}/>
 
-    </div>
+      <div className='flex justify-center'>
+        <Button btnLabelText={'Submit'} customStyle={'bg-pink-400 text-white w-20'} fn={handleSubmit}/>
+      </div>
+    </form>
   )
 }
 
