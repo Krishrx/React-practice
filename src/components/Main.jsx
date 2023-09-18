@@ -6,6 +6,13 @@ import {options as countryList} from '../data/countryList'
 
 function Main() {
 
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setSelectedImage(URL.createObjectURL(file)); 
+  };
+
   const countryOptions = countryList.map(({ value, label }) => {
     return (
       <option key={label} value={value}>
@@ -145,9 +152,15 @@ function Main() {
       <Input type={'textarea'} textPlaceholder={'Write something...'} name={'bio'} displayText={'Bio'} fn={handleChange} value={bio}/>
 
       <Input type={'file'} name={'file'} displayText={'Upload resume'} fn={handleChange} value={file} />
+
       <div className='flex justify-center'>
         <Button btnLabelText={'Submit'} customStyle={'bg-pink-400 text-white w-20'} fn={handleSubmit}/>
       </div>
+
+      <div>
+      <input type="file" accept="image/*" onChange={handleImageChange} />
+      {selectedImage && <img src={selectedImage} alt="Selected" />}
+    </div>
     </form>
   )
 }
