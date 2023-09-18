@@ -2,16 +2,9 @@ import React,{useState} from 'react'
 import Input from '../shared/Input';
 import Button from '../shared/Button';
 import {options as countryList} from '../data/countryList'
-
+import ProfilePhoto from './ProfilePhoto';
 
 function Main() {
-
-  const [selectedImage, setSelectedImage] = useState(null);
-
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    setSelectedImage(URL.createObjectURL(file)); 
-  };
 
   const countryOptions = countryList.map(({ value, label }) => {
     return (
@@ -156,11 +149,7 @@ function Main() {
       <div className='flex justify-center'>
         <Button btnLabelText={'Submit'} customStyle={'bg-pink-400 text-white w-20'} fn={handleSubmit}/>
       </div>
-
-      <div>
-      <input type="file" accept="image/*" onChange={handleImageChange} />
-      {selectedImage && <img src={selectedImage} alt="Selected" />}
-    </div>
+      <ProfilePhoto/>
     </form>
   )
 }
