@@ -1,9 +1,9 @@
-import React, { useContext } from 'react'
-import {ThemeContext} from './Parent'
+import React from 'react'
 import Button from '../../shared/Button'
+import { useTheme } from './ThemeProvider'
 
 function GrandChildren() {
-    const { theme, toggleTheme } = useContext(ThemeContext);
+    const { theme, toggleTheme } = useTheme();
     
     const themeColor = {
         backgroundColor: (theme === 'light') ? 'lightgray' : 'darkgray'
