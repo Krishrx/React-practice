@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import Button from '../shared/Button';
+import Button from '../../shared/Button';
 
 function Animal() {
     const [animalName, setAnimalName] = useState('dog');
