@@ -1,8 +1,8 @@
-import React,{useState} from 'react'
+import React,{useState,useRef} from 'react'
 import Input from '../shared/Input';
 import Button from '../shared/Button';
 import {options as countryList} from '../data/countryList'
-import ProfilePhoto from './ProfilePhoto';
+
 
 function Main() {
 
@@ -31,6 +31,7 @@ function Main() {
     
   }
 
+  const formRef = useRef(null);
   const [formData, setFormData] = useState(initialData);
 
   const handleChange = (e) => {
@@ -98,20 +99,15 @@ function Main() {
       file
     }
 
-    console.log(finalData);
+    console.log(finalData);//send to backend
 
-    resetForm();
-    
-    console.log(formData);
-
+    handleReset();
   }
 
-  const resetForm = () => {
+  const handleReset = () => {
     setFormData(initialData);
-    console.log('rendering...');
-  }
-
-  
+    formRef.current.reset();
+  };
 
   const {
       fName,
@@ -126,7 +122,7 @@ function Main() {
     } = formData;
 
   return (
-    <form className='m-5 p-5 flex flex-col space-y-4 bg-pink-50 ' onSubmit={handleSubmit}>
+    <form ref={formRef} className='m-5 p-5 flex flex-col space-y-4 bg-pink-50 ' onSubmit={handleSubmit}>
       <Input type={'text'} name={'fName'} displayText={'First Name'} fn={handleChange} value={fName}/>
       <Input type={'email'} name={'email'} displayText={'Email Id'} fn={handleChange} value={email}/>
       <Input type={'number'} name={'phno'} displayText={'Phone Number'} fn={handleChange} value={phno}/>
@@ -150,10 +146,11 @@ function Main() {
 
       <Input type={'file'} name={'file'} displayText={'Upload resume'} fn={handleChange} value={file} />
 
-      <div className='flex justify-center'>
-        <Button btnLabelText={'Submit'} customStyle={'bg-pink-400 text-white w-20'} fn={handleSubmit}/>
+      <div className='flex justify-center space-x-10'>
+        <Button btnLabelText={'Submit'} customStyle={'bg-pink-400 text-white w-20'} fn={handleSubmit} />
+        <Button btnLabelText={'Reset'} customStyle={'bg-slate-400 text-white w-20'} fn={handleReset}/>
       </div>
-      <ProfilePhoto/>
+      
     </form>
   )
 }

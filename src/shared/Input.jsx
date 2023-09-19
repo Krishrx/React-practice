@@ -24,7 +24,7 @@ function Input({type,name,customStyle,displayText,fn,value,checked,selectOptions
         return (
             <div className='space-x-4 flex justify-center items-center'>
                 <label htmlFor={name}>{displayText}</label>
-                <select name={name} id={name} value={value} onChange={fn}>
+                <select className={style} name={name} id={name} value={value} onChange={fn}>
                     {selectOptions}
                 </select>    
             </div> 
@@ -34,7 +34,7 @@ function Input({type,name,customStyle,displayText,fn,value,checked,selectOptions
         return (
             <div className='space-x-4 flex justify-center items-center'>
                 <label htmlFor={name}>{displayText}</label><br />
-                <textarea className='p-2' name={name} id={name} cols="120" rows="10" onChange={fn} placeholder={textPlaceholder}></textarea>
+                <textarea className={style} name={name} id={name} cols="120" rows="" onChange={fn} placeholder={textPlaceholder}></textarea>
             </div> 
 
         )
