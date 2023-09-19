@@ -100,14 +100,18 @@ function Main() {
 
     console.log(finalData);
 
-    // setFormData(prevData => {
-    //     return {
-    //       ...prevData,initialData
-    //     }
-    // })
+    resetForm();
     
-    // console.log(formData);
+    console.log(formData);
+
   }
+
+  const resetForm = () => {
+    setFormData(initialData);
+    console.log('rendering...');
+  }
+
+  
 
   const {
       fName,
