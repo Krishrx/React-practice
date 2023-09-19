@@ -1,3 +1,4 @@
+import React from 'react';
 import Animal from "./components/Animal";
 import Counter from "./components/Counter";
 
