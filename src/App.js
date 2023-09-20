@@ -4,6 +4,8 @@ import Counter from "./components/useState/Counter";
 import WindowSize from './components/useEffect/WindowSize';
 import GetDataFromAPI from './components/useEffect/GetDataFromAPI';
 import Parent from './components/useContext/Parent';
+import Country from './components/FetchCountryTask/Country';
+import CountryContainer from './components/FetchCountryTask/CountryContainer';
 
 function App() {
 
@@ -18,7 +20,8 @@ function App() {
       <GetDataFromAPI /> */}
       
       {/*useContext*/}
-      <Parent/>
+      {/* <Parent/> */}
+      <CountryContainer/>
 
     </div>
   );
