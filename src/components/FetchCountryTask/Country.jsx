@@ -8,12 +8,22 @@ function Country() {
     const fetchCountry = async() => {
         const response = await axios.get('https://restcountries.com/v3.1/all?fields=name,capital,currencies,flags,population,languages');
         const res = await response.data;
+        sortCountry(res);
         setCountry(res);
     }
 
     useEffect(() => {
       fetchCountry();
-    }, [countryArray]);
+    });
+  
+  const sortCountry = (arrObj) => {
+      arrObj.sort((a, b) => {
+      const nameA = a.name.common.toLowerCase();
+      const nameB = b.name.common.toLowerCase();
+        
+      return nameA.localeCompare(nameB, undefined, { sensitivity: 'base' });
+    });
+  }
     
   return (
     <div className='country flex justify-center items-center flex-wrap m-5 gap-x-20'>
