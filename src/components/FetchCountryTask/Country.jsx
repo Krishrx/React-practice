@@ -26,7 +26,7 @@ function Country() {
   }
     
   return (
-    <div className='country flex justify-center items-center flex-wrap m-5 gap-x-20'>
+    <div className=' flex justify-center items-center flex-wrap m-5 gap-x-20 '>
           {/* <Button btnLabelText={'Fetch'} fn={fetchCountry} customStyle={'bg-teal-400'} /> */}
 
           {countryArray.map((arr, index) => {
@@ -50,7 +50,7 @@ function Country() {
                 }
               
               return (
-                <div key={index} className='m-5 w-[400px] h-[584px] shadow-sm rounded-md overflow-hidden bg-white hover:shadow-xl transition-shadow duration-300'>
+                <div key={index} className='m-5 w-[400px] h-[584px] shadow-sm rounded-md overflow-hidden bg-white country-box'>
                   
                   <div className='flex flex-col justify-evenly items-center h-[40%] space-y-8 p-2'>
                       <img src={flag} alt={flagAlt} className='w-[240px] h-[143px] rounded-md shadow-md object-cover mt-6' />
