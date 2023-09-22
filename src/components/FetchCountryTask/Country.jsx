@@ -26,7 +26,7 @@ function Country() {
   }
     
   return (
-    <div className=' flex justify-center items-center flex-wrap m-5 gap-x-20 '>
+    <div className=' flex justify-center items-center flex-wrap m-5 gap-x-20 bg-gray-100 w-10/12'>
           {/* <Button btnLabelText={'Fetch'} fn={fetchCountry} customStyle={'bg-teal-400'} /> */}
 
           {countryArray.map((arr, index) => {
