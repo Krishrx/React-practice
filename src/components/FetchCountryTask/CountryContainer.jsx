@@ -13,15 +13,7 @@ function CountryContainer() {
 
   const [countryCount, setCountryCount] = useState(countryArray.length);
 
-    const fetchCountry = async() => {
-        const response = await axios.get('https://restcountries.com/v3.1/all?fields=name,capital,currencies,flags,population,languages');
-        const res = await response.data;
-        sortCountry(res);
-        setCountry(res);
-        setCountryCount(res.length);
-    }
-
-    useEffect(() => {
+  useEffect(() => {
       if(searchBarValue!==''){
         let filteredArray = filterArrayBasedOnSearchValue(searchBarValue, countryArray);
         sortCountry(filteredArray);
@@ -32,6 +24,14 @@ function CountryContainer() {
         fetchCountry();
       }
     },[searchBarValue])
+
+    const fetchCountry = async() => {
+        const response = await axios.get('https://restcountries.com/v3.1/all?fields=name,capital,currencies,flags,population,languages');
+        const res = await response.data;
+        sortCountry(res);
+        setCountry(res);
+        setCountryCount(res.length);
+    }
   
   const sortCountry = (arrObj) => {
       arrObj.sort((a, b) => {
