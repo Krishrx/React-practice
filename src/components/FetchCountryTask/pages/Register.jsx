@@ -1,13 +1,17 @@
 import React from 'react'
 import Input from '../../../shared/Input'
 import Button from '../../../shared/Button'
-
+import Header from '../Header'
 function Register() {
 
     const handleRegister = () => {
         alert('Registered Successfully !!!');
     }
-  return (
+    return (
+        <>
+        <div className='w-full flex justify-center'>
+        <Header/>
+       </div>
       <div className='w-full h-full flex justify-center px-2 py-4'>
           <div className='flex flex-col justify-center items-center w-10/12 md:w-6/12 space-y-5 shadow-lg rounded-lg py-6'>
               <div className='flex flex-col justify-center items-center w-6/12 md:w-6/12 space-y-5'>
@@ -19,7 +23,8 @@ function Register() {
                   <Button btnLabelText={'Sign Up'} fn={handleRegister} customStyle={'bg-orange-500 text-white'}/>
               </div>  
           </div>   
-    </div>
+            </div>
+        </>
   )
 }
 

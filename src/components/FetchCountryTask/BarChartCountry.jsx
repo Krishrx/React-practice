@@ -1,9 +1,13 @@
 import React from 'react'
-
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 function BarChartCountry() {
   return (
     <div className="w-10/12 h-full">
       <BarGroup arr={tenHighestPopulation} />
+      
+      <div className='flex justify-end'>
+        <AnchorLink href='#pageTitle'><span className='p-3 bg-purple-700 text-white rounded-full cursor-pointer'>top</span></AnchorLink>
+      </div>
     </div>
   );
 }
@@ -16,7 +20,7 @@ const BarGroup = ({arr}) => {
       console.log(popPercent);
     let style = `w-[${popPercent}%] h-full bg-orange-500`;
     return (
-      <div key={country} className="flex flex-col justify-between w-8/12 mx-auto">
+      <div key={country} id='CountryBarChart' className="flex flex-col justify-between w-8/12 mx-auto">
         <div  className="flex justify-between items-center gap-2">
 
           <div className="basis-1/5 uppercase">
