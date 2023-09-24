@@ -4,7 +4,7 @@ function BarChartCountry() {
   return (
     <div className="w-10/12 h-full">
       <BarGroup arr={tenHighestPopulation} />
-      
+
       <div className='flex justify-end'>
         <AnchorLink href='#pageTitle'><span className='p-3 bg-purple-700 text-white rounded-full cursor-pointer'>top</span></AnchorLink>
       </div>
@@ -17,7 +17,7 @@ const BarGroup = ({arr}) => {
     let country = b.country;
     let pop = b.population;
       let popPercent = calculatePercentage(pop);
-      console.log(popPercent);
+      //console.log(popPercent);
     let style = `w-[${popPercent}%] h-full bg-orange-500`;
     return (
       <div key={country} id='CountryBarChart' className="flex flex-col justify-between w-8/12 mx-auto">

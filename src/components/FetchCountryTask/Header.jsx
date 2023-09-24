@@ -21,10 +21,10 @@ function Header() {
             isMenuOpen ? 'translate-y-0' : '-translate-y-full'
           } flex flex-col justify-center items-center w-full absolute text-slate-600 bg-orange-50 left-0 top-0 py-14 space-y-5 transition-transform duration-300 ease-in-out rounded-b-2xl md:space-x-4  md:static md:flex-row md:py-0 md:space-y-0 md:rounded-none md:bg-transparent md:translate-y-0`}
         >
-          <li className='hover:text-orange-400'><Link to={'/'}>Home</Link></li>
-          <li className='hover:text-orange-400'><Link to={'/about'}>About</Link></li>
-          <li className='hover:text-orange-400'><Link to={'/login'}>Login</Link></li>
-          <li className='hover:text-orange-400'><Link to={'/register'}>Register</Link></li>
+          <li className='relative'><Link className='navLinks' to={'/'}>Home</Link></li>
+          <li className='relative'><Link className='navLinks' to={'/about'}>About</Link></li>
+          <li className='relative'><Link className='navLinks' to={'/login'}>Login</Link></li>
+          <li className='relative'><Link className='navLinks' to={'/register'}>Register</Link></li>
         </ul>
       </nav>
       <Outlet/>
