@@ -25,3 +25,6 @@
     transform: scaleX(1);
 }
 
+.clipboard:hover + .tooltip{
+    opacity: 1;
+}
