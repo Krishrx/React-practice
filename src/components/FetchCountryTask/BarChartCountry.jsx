@@ -128,4 +128,4 @@ const BarGroupLang = ({arr}) => {
 
 
 
-export default BarChartCountry
+export default BarChartCountry;
