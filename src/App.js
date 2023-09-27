@@ -5,14 +5,14 @@ import Login from './components/FetchCountryTask/pages/Login';
 import Register from './components/FetchCountryTask/pages/Register';
 import Error from './components/FetchCountryTask/pages/Error';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Main from './components/HexColorGenerator/Main';
-
+//import Main from './components/HexColorGenerator/Main';
+import Main from './components/useReducer/Main'
 function App() {
 
   return (
       
     <>
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Routes>
           <Route path='/'>
             <Route index element={<CountryContainer />}/>
@@ -22,8 +22,9 @@ function App() {
             <Route path="*" element={<Error />} />
           </Route>
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
       {/* <Main/> */}
+      <Main/>
     </>
   );
 }
