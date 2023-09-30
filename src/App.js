@@ -6,7 +6,8 @@ import Register from './components/FetchCountryTask/pages/Register';
 import Error from './components/FetchCountryTask/pages/Error';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 //import Main from './components/HexColorGenerator/Main';
-import Main from './components/useReducer/Main'
+// import Main from './components/useReducer/Main'
+import Main from './components/Router/Main'
 function App() {
 
   return (
@@ -24,7 +25,8 @@ function App() {
         </Routes>
       </BrowserRouter> */}
       {/* <Main/> */}
-      <Main/>
+      {/* <Main/> */}
+        <Main />
     </>
   );
 }

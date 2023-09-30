@@ -75,6 +75,7 @@ function Main() {
     //       <Button btnLabelText={'-'} fn={handleSub}/>
       // </div>
       <div className='flex flex-col justify-center items-center m-5'>
+          <div>{process.env.REACT_APP_LOGIN_ID}</div>
           <input type="text" ref={inputRef} className='outline p-2 rounded outline-teal-300' placeholder={'Add task...'} onChange={handleTask}/>
           <Button btnLabelText={'Add'} customStyle={'bg-teal-300 m-4'} fn={handleSubmit} />
           <div>
