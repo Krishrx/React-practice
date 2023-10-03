@@ -1,5 +1,6 @@
 import React from 'react'
-import { BrowserRouter,Routes,Route,Link,Outlet } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link, Outlet, useParams } from 'react-router-dom'
+import blogs from '../../utils/Blogs'
 function Main() {
   return (
       <div>
@@ -11,8 +12,11 @@ function Main() {
                           <Route path='view' element={<ViewProfile />} />
                           <Route path="edit" element={<EditProfile />} />
                     </Route>
+                  <Route path='blogs' element={<Blogs />} />
+                  <Route path='blog/:bid' element={<Blog/>} />  
                   <Route path='contact' element={<Contact/>} />
                   <Route path='report' element={<Report />} />
+                  <Route path='*' element={<NoPage />}/> 
                 </Route>
               </Routes>
           </BrowserRouter>
@@ -30,14 +34,17 @@ export function NavBar() {
                     <Link to="/">Home</Link>
                 </li>
                 <li>
-                    <Link to="/profile">Profile</Link>
+                    <Link to="profile">Profile</Link>
                 </li>
                 <li>
-                    <Link to="/contact">Contact</Link>
+                    <Link to="blogs">Blogs</Link>
+                </li>   
+                <li>
+                    <Link to="contact">Contact</Link>
                 </li>
                 <li>
-                    <Link to="/report">Report</Link>
-                </li>
+                    <Link to="report">Report</Link>
+                </li>  
             </ul>
             </nav>
             <Outlet/>
@@ -46,9 +53,15 @@ export function NavBar() {
 }
 
 export function Home() {
+    const navBlogs = blogs.map(({ id }) => {
+        return (<Link key={id} className='bg-fuchsia-500 text-white px-4 py-2 rounded-md' to={`/blog/${id}`}>Blog {id}</Link>)
+    });
     return (
         <div>
             Home
+            <div className='flex flex-wrap gap-4'>
+               {navBlogs}
+            </div>
         </div>
     )
 }
@@ -62,7 +75,8 @@ export function Profile() {
                 <li><Link to={'/profile/edit'}>Edit Profile</Link></li>
             </ul>
             <Outlet /> 
-            {/* this line is must to nest route */}
+            {/* this line is must to nest route,
+            An <Outlet> should be used in parent route components to render their child route components*/}
         </div>
     )
 }
@@ -95,6 +109,55 @@ export function EditProfile() {
     return (
         <div>
             in EditProfile
+        </div>
+    )
+}
+
+export function NoPage() {
+    return (
+        <div className='flex flex-col justify-center items-center space-y-2'>
+            <h1 className='text-2xl font-medium'>You're looking for wat'son? </h1>
+        </div>
+    )
+}
+
+export function Blogs() {
+    const wrappedBlogs = blogs.map(({ id, title, content }) => {
+        return (
+            <div key={id} className='flex flex-col justify-center items-center'>
+                <h1 className='text-2xl font-medium'>{title}</h1>
+                <p className='text-center text-lg'>{content}</p>
+            </div>
+        )
+    })
+    return (
+        <div className='flex flex-col justify-center items-center p-5 bg-sky-200 space-y-5'>
+            <h1 className='text-4xl font-bold'>Blogs</h1>
+            {wrappedBlogs}
+        </div>
+    )
+}
+
+export function Blog() {
+    let {bid} = useParams();
+    const blog = blogs.find(({ id }) => id === parseInt(bid));
+
+    const navBlogs = blogs.map(({ id }) => {
+        return (<Link key={id} className='bg-fuchsia-500 text-white px-4 py-2 rounded-md' to={`/blog/${id}`}>Blog {id}</Link>)
+    });
+
+    return (
+        <div className='flex flex-col justify-center items-center p-5 bg-sky-200 space-y-5'>
+            { blog!==undefined ? (<div key={blog.id} className='flex flex-col justify-center items-center'>
+                <h1 className='text-2xl font-medium'>{blog.title}</h1>
+                <p className='text-center text-lg'>{blog.content}</p>
+            </div>) : (<div className='flex flex-col justify-center items-center space-y-2'>
+                    <h1 className='text-2xl font-medium'>You're looking for wat'son? </h1>
+                    <small className='italic'>check with your blog id and try again</small>
+            </div>)}
+            <div className='flex flex-wrap gap-4'>
+               {navBlogs}
+            </div>
         </div>
     )
 }

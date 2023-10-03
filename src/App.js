@@ -26,7 +26,8 @@ function App() {
       </BrowserRouter> */}
       {/* <Main/> */}
       {/* <Main/> */}
-        <Main />
+      <Main/>
+      
     </>
   );
 }
