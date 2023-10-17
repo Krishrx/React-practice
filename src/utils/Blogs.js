@@ -8,7 +8,27 @@ const blogs = [
     { id: 7, title: 'The Power of HTML Forms', content: 'Harness the potential of HTML forms to collect and process user data on your websites.' },
     { id: 8, title: 'Optimizing Website Performance', content: 'Boost your websites speed and efficiency with optimization techniques and best practices.' },
     { id: 9, title: 'Securing Your Web Applications', content: 'Explore essential security measures to protect your web applications from common vulnerabilities.' },
-    { id: 10, title: 'Java vs. JavaScript: Key Differences', content: 'Clarify the distinctions between Java and JavaScript to avoid confusion in your coding journey.' }
+    { id: 10, title: 'Java vs. JavaScript: Key Differences', content: 'Clarify the distinctions between Java and JavaScript to avoid confusion in your coding journey.' },
+    { id: 11, title: 'Exploring React Hooks', content: 'Dive into the world of React Hooks and learn how to manage state and side effects in your React applications.' },
+    { id: 12, title: 'Introduction to Node.js', content: 'Discover the power of server-side JavaScript with Node.js and build scalable and efficient web applications.' },
+    { id: 13, title: 'The Art of Full-Stack Web Development', content: 'Become a versatile full-stack developer by mastering both the front-end and back-end technologies.' },
+    { id: 14, title: 'Responsive Design Best Practices', content: 'Learn the best practices for creating responsive and mobile-friendly web designs.' },
+    { id: 15, title: 'Web Development Tools You Should Know', content: 'Explore essential tools and software for web developers to streamline your workflow.' },
+    { id: 16, title: 'Understanding RESTful APIs', content: 'Grasp the concepts of RESTful APIs and how to design and consume them in your web applications.' },
+    { id: 17, title: 'Database Design for Web Developers', content: 'Master the art of designing efficient and scalable databases for your web applications.' },
+    { id: 18, title: 'Web Accessibility: Inclusive Design', content: 'Create web applications that are accessible to everyone, including individuals with disabilities.' },
+    { id: 19, title: 'JavaScript Frameworks: React vs. Vue', content: 'Compare the strengths and weaknesses of React and Vue.js to choose the right framework for your project.' },
+    { id: 20, title: 'Web Development Career Path: Tips and Insights', content: 'Get guidance and insights on building a successful career in web development.' },
+    { id: 21, title: 'CSS Grid Layout for Complex Designs', content: 'Learn how to use CSS Grid to create advanced, grid-based layouts for your web projects.' },
+    { id: 22, title: 'React Native App Development', content: 'Explore the world of mobile app development using React Native to build cross-platform applications.' },
+    { id: 23, title: 'Web Development in the Cloud: AWS vs. Azure', content: 'Compare the features and services of Amazon Web Services (AWS) and Microsoft Azure for hosting web applications.' },
+    { id: 24, title: 'Scalable Architecture with Microservices', content: 'Architect your web applications using a microservices approach to achieve scalability and maintainability.' },
+    { id: 25, title: 'Data Visualization with D3.js', content: 'Discover the power of D3.js for creating interactive and engaging data visualizations on your websites.' },
+    { id: 26, title: 'E-commerce Website Development', content: 'Learn the key components and strategies for building an e-commerce website that drives online sales.' },
+    { id: 27, title: 'Web Development Trends in 2023', content: 'Stay updated on the latest trends and technologies shaping the web development landscape in 2023.' },
+    { id: 28, title: 'Web Accessibility Testing Tools', content: 'Explore tools and techniques to test and ensure the accessibility of your web applications for all users.' },
+    { id: 29, title: 'Serverless Computing with AWS Lambda', content: 'Implement serverless architecture using AWS Lambda functions for cost-effective and scalable web solutions.' },
+    { id: 30, title: 'Front-end Frameworks: Angular vs. React vs. Vue', content: 'Compare the features and use cases of popular front-end frameworks to choose the right one for your project.' }
 ]
  
 export default blogs;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { BrowserRouter, Routes, Route, Link, Outlet, useParams } from 'react-router-dom'
 import blogs from '../../utils/Blogs'
 function Main() {
@@ -122,7 +122,9 @@ export function NoPage() {
 }
 
 export function Blogs() {
-    const wrappedBlogs = blogs.map(({ id, title, content }) => {
+    const [visibleBlogs, setVisibleBlogs] = useState(5);
+
+    const wrappedBlogs = blogs.slice(0, visibleBlogs).map(({ id, title, content }) => {
         return (
             <div key={id} className='flex flex-col justify-center items-center'>
                 <h1 className='text-2xl font-medium'>{title}</h1>
@@ -130,10 +132,20 @@ export function Blogs() {
             </div>
         )
     })
+
+    const loadMore = () => {
+        setVisibleBlogs(prevVisibleBlogs => prevVisibleBlogs + 5);
+    }
+
     return (
         <div className='flex flex-col justify-center items-center p-5 bg-sky-200 space-y-5'>
             <h1 className='text-4xl font-bold'>Blogs</h1>
             {wrappedBlogs}
+            {visibleBlogs < blogs.length && (
+                <button onClick={loadMore} className="bg-blue-500 text-white p-2 rounded-md">
+                    Load More
+                </button>
+            )}
         </div>
     )
 }
