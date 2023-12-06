@@ -1,10 +1,10 @@
-
+import Card from './components/review_card/Card'
 function App() {
  
   return (
-    <div className="App">
-      
-    </div>
+    <>
+      <Card/>
+    </>
   );
 }
 
