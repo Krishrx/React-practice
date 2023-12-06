@@ -1,9 +1,9 @@
-import Card from './components/review_card/Card'
+import Cards from './components/review_card/Cards'
 function App() {
  
   return (
     <>
-      <Card/>
+      <Cards/>
     </>
   );
 }
