@@ -34,6 +34,11 @@ function Main() {
   const formRef = useRef(null);
   const [formData, setFormData] = useState(initialData);
 
+  const [validationField, setValidationField] = useState({
+    name: 'fName',
+    isOk:true
+  })
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     if (type === 'checkbox') {
@@ -59,11 +64,15 @@ function Main() {
         return {
           ...prevData,[name]:value
         }
+      })
+      if (!(formData.fName.length >=8 && formData.fName.length <= 12)) {
+        setValidationField({...validationField,isOk:false})
       }
-        
-  )
-
+      else if (formData.fName.length >= 8 && formData.fName.length <= 12) {
+        setValidationField({...validationField,isOk:true})
+      }
     }
+
   }
 
   const handleSubmit = (e) => {
@@ -122,8 +131,9 @@ function Main() {
     } = formData;
 
   return (
-    <form ref={formRef} className='m-5 p-5 flex flex-col space-y-4 bg-pink-50 ' onSubmit={handleSubmit}>
-      <Input type={'text'} name={'fName'} displayText={'First Name'} fn={handleChange} value={fName}/>
+    <form ref={formRef} className='m-5 p-5 flex flex-col space-y-4 justify-center items-center bg-pink-50 ' onSubmit={handleSubmit}>
+      <Input type={'text'} name={'fName'} displayText={'First Name'} fn={handleChange} value={fName} />
+      <span className={`${validationField.isOk?'hidden':''}`}>8-12 chars are required</span>
       <Input type={'email'} name={'email'} displayText={'Email Id'} fn={handleChange} value={email}/>
       <Input type={'number'} name={'phno'} displayText={'Phone Number'} fn={handleChange} value={phno}/>
       <Input type={'date'} name={'dob'} displayText={'Date of Birth'} fn={handleChange} value={dob}/>
